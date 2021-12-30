@@ -1,18 +1,20 @@
 package scptest
 
 import (
+	"context"
 	"log"
 
+	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
 
 func resourceResourceGroup() *schema.Resource {
 	log.Println("### resourceResourceGroup Start")
 	return &schema.Resource{
-		Create: resourceResourceGroupCreate,
-		Read:   resourceResourceGroupRead,
-		Update: resourceResourceGroupUpdate,
-		Delete: resourceResourceGroupDelete,
+		CreateContext: resourceResourceGroupCreate,
+		ReadContext:   resourceResourceGroupRead,
+		UpdateContext: resourceResourceGroupUpdate,
+		DeleteContext: resourceResourceGroupDelete,
 
 		Schema: map[string]*schema.Schema{
 			"uuid_count": &schema.Schema{
@@ -22,7 +24,7 @@ func resourceResourceGroup() *schema.Resource {
 		},
 	}
 }
-func resourceResourceGroupCreate(d *schema.ResourceData, m interface{}) error {
+func resourceResourceGroupCreate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	/*
 		uuid_count := d.Get("uuid_count").(string)
 		d.SetId(uuid_count)
@@ -36,26 +38,30 @@ func resourceResourceGroupCreate(d *schema.ResourceData, m interface{}) error {
 		return resourceResourceGroupRead(d, m)
 	*/
 	log.Println("### resourceResourceGroupCreate Start")
-	return nil
+	var diags diag.Diagnostics
+	return diags
 }
 
-func resourceResourceGroupRead(d *schema.ResourceData, m interface{}) error {
+func resourceResourceGroupRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	log.Println("### resourceResourceGroupRead Start")
-	return nil
+	var diags diag.Diagnostics
+	return diags
 }
 
-func resourceResourceGroupUpdate(d *schema.ResourceData, m interface{}) error {
+func resourceResourceGroupUpdate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	log.Println("### resourceResourceGroupUpdate Start")
 	/*
 		return resourceResourceGroupRead(d, m)
 	*/
-	return nil
+	var diags diag.Diagnostics
+	return diags
 }
 
-func resourceResourceGroupDelete(d *schema.ResourceData, m interface{}) error {
+func resourceResourceGroupDelete(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	log.Println("### resourceResourceGroupDelete Start")
 	/*
 		d.SetId("")
 	*/
-	return nil
+	var diags diag.Diagnostics
+	return diags
 }

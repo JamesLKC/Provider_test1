@@ -1,4 +1,4 @@
-module github.com/JamesLKC/terraform-provider-uuid
+module terraform-provider-scptest
 
 go 1.17
 
